@@ -21,6 +21,8 @@ class Conversation {
     var contractorID: String
     var userID: String
     var userName: String = ""
+    var quoteID: String = ""
+    var scheduleID: String = ""
     
     init(name: String, convoID: String, yelpID: String, _ img: UIImage? = nil, cID: String, uid: String) {
         self.name = name

@@ -59,6 +59,7 @@ class ShowInboxInteractor: ShowInboxBusinessLogic, ShowInboxDataStore
             
             
             var userRef = self.ref.child("users").child(user.uid)
+            
             self._refHandle = userRef.child("conversations").observe(DataEventType.childAdded, with: { [weak self] (snapshot) in
                 
                 guard let strongSelf = self else { return }
@@ -69,8 +70,14 @@ class ShowInboxInteractor: ShowInboxBusinessLogic, ShowInboxDataStore
                 let cid = data?["contractorID"] as? String
                 let uid = data?["userID"] as? String
                 let username = (data?["userName"] as? String) ?? ""
+                let quoteID = (data?["quoteID"] as? String) ?? ""
+                let scheduleID = (data?["scheduleID"] as? String) ?? ""
+                var projectName = data?["projectName"] as! String
                 let convo = Conversation(name: name!, convoID: snapshot.key, yelpID: yelpID!, cID: cid!, uid: uid!)
                 convo.userName = username
+                convo.quoteID = quoteID
+                convo.scheduleID = scheduleID
+                convo.projectName = projectName
                 strongSelf.conversations.insert(convo, at: 0)
 //                strongSelf.conversations.append(convo)
                 strongSelf.presenter?.presentInbox(response: ShowInbox.FetchInbox.Response(conversations: strongSelf.conversations))

@@ -70,6 +70,7 @@ class ShowInboxViewController: UIViewController, ShowInboxDisplayLogic
     // MARK: View lifecycle
     
     var conversations: [ShowInbox.FetchInbox.ViewModel.DisplayableConversation] = []
+    var refresher: UIRefreshControl!
     
     override func viewDidLoad()
     {
@@ -79,6 +80,9 @@ class ShowInboxViewController: UIViewController, ShowInboxDisplayLogic
         self.inboxTableView.setAutomaticHeight(estimated: 200)
         self.inboxTableView.tableFooterView = UIView()
         self.inboxTableView.showLoadingPlaceholder()
+        
+//        refresher = UIRefreshControl()
+//        refresher.addTarget(self, action: #selector(), for: .valueChanged)
         
         interactor?.configureDatabase()
         fetchInbox()

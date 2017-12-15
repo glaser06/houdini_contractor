@@ -15,6 +15,12 @@
 		E350FDCC1FE28DDC002F4A55 /* ScheduleFormRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDC61FE28DDC002F4A55 /* ScheduleFormRouter.swift */; };
 		E350FDCD1FE28DDC002F4A55 /* ScheduleFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDC71FE28DDC002F4A55 /* ScheduleFormViewController.swift */; };
 		E350FDCE1FE28DDC002F4A55 /* ScheduleFormWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDC81FE28DDC002F4A55 /* ScheduleFormWorker.swift */; };
+		E350FDD71FE3BD74002F4A55 /* VerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDD11FE3BD74002F4A55 /* VerificationInteractor.swift */; };
+		E350FDD81FE3BD74002F4A55 /* VerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDD21FE3BD74002F4A55 /* VerificationModels.swift */; };
+		E350FDD91FE3BD74002F4A55 /* VerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDD31FE3BD74002F4A55 /* VerificationPresenter.swift */; };
+		E350FDDA1FE3BD74002F4A55 /* VerificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDD41FE3BD74002F4A55 /* VerificationRouter.swift */; };
+		E350FDDB1FE3BD74002F4A55 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDD51FE3BD74002F4A55 /* VerificationViewController.swift */; };
+		E350FDDC1FE3BD74002F4A55 /* VerificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350FDD61FE3BD74002F4A55 /* VerificationWorker.swift */; };
 		E36B4B0F1FD7AF450035DC34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B4B0E1FD7AF450035DC34 /* AppDelegate.swift */; };
 		E36B4B111FD7AF450035DC34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B4B101FD7AF450035DC34 /* ViewController.swift */; };
 		E36B4B141FD7AF450035DC34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36B4B121FD7AF450035DC34 /* Main.storyboard */; };
@@ -91,6 +97,12 @@
 		E350FDC61FE28DDC002F4A55 /* ScheduleFormRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFormRouter.swift; sourceTree = "<group>"; };
 		E350FDC71FE28DDC002F4A55 /* ScheduleFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFormViewController.swift; sourceTree = "<group>"; };
 		E350FDC81FE28DDC002F4A55 /* ScheduleFormWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFormWorker.swift; sourceTree = "<group>"; };
+		E350FDD11FE3BD74002F4A55 /* VerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationInteractor.swift; sourceTree = "<group>"; };
+		E350FDD21FE3BD74002F4A55 /* VerificationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationModels.swift; sourceTree = "<group>"; };
+		E350FDD31FE3BD74002F4A55 /* VerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPresenter.swift; sourceTree = "<group>"; };
+		E350FDD41FE3BD74002F4A55 /* VerificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationRouter.swift; sourceTree = "<group>"; };
+		E350FDD51FE3BD74002F4A55 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		E350FDD61FE3BD74002F4A55 /* VerificationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationWorker.swift; sourceTree = "<group>"; };
 		E36B4B0B1FD7AF450035DC34 /* ContractorApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContractorApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36B4B0E1FD7AF450035DC34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E36B4B101FD7AF450035DC34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +218,19 @@
 			path = "ScheduleForm\\";
 			sourceTree = "<group>";
 		};
+		E350FDD01FE3BD5D002F4A55 /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				E350FDD11FE3BD74002F4A55 /* VerificationInteractor.swift */,
+				E350FDD21FE3BD74002F4A55 /* VerificationModels.swift */,
+				E350FDD31FE3BD74002F4A55 /* VerificationPresenter.swift */,
+				E350FDD41FE3BD74002F4A55 /* VerificationRouter.swift */,
+				E350FDD51FE3BD74002F4A55 /* VerificationViewController.swift */,
+				E350FDD61FE3BD74002F4A55 /* VerificationWorker.swift */,
+			);
+			path = Verification;
+			sourceTree = "<group>";
+		};
 		E36B4B021FD7AF450035DC34 = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +316,7 @@
 		E36B4B3F1FD7AFA20035DC34 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E350FDD01FE3BD5D002F4A55 /* Verification */,
 				E350FDCF1FE28DE1002F4A55 /* ScheduleForm */,
 				E36B4B861FD7EA7F0035DC34 /* SignIn */,
 				E36B4B971FD7F00F0035DC34 /* ShowInbox */,
@@ -706,6 +732,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E350FDDB1FE3BD74002F4A55 /* VerificationViewController.swift in Sources */,
 				E36B4B801FD7EA790035DC34 /* SignInViewController.swift in Sources */,
 				E36B4B4B1FD7DCB50035DC34 /* MessageRouter.swift in Sources */,
 				E36B4B641FD7E5300035DC34 /* Business.swift in Sources */,
@@ -717,10 +744,14 @@
 				E36B4B811FD7EA790035DC34 /* SignInRouter.swift in Sources */,
 				E36B4B921FD7EFF50035DC34 /* ShowInboxInteractor.swift in Sources */,
 				E36B4B851FD7EA790035DC34 /* SignInWorker.swift in Sources */,
+				E350FDD91FE3BD74002F4A55 /* VerificationPresenter.swift in Sources */,
 				E36B4B741FD7E62A0035DC34 /* MessageTableViewCell.swift in Sources */,
 				E36B4B0F1FD7AF450035DC34 /* AppDelegate.swift in Sources */,
 				E36B4B821FD7EA790035DC34 /* SignInModels.swift in Sources */,
+				E350FDDC1FE3BD74002F4A55 /* VerificationWorker.swift in Sources */,
+				E350FDD81FE3BD74002F4A55 /* VerificationModels.swift in Sources */,
 				E36B4B491FD7DCB50035DC34 /* MessagePresenter.swift in Sources */,
+				E350FDD71FE3BD74002F4A55 /* VerificationInteractor.swift in Sources */,
 				E36B4B4D1FD7DCB50035DC34 /* MessageWorker.swift in Sources */,
 				E36B4B841FD7EA790035DC34 /* SignInPresenter.swift in Sources */,
 				E3B9FFD21FD7F0D200CC5BE9 /* UIViewExtensions.swift in Sources */,
@@ -736,6 +767,7 @@
 				E3B9FFD71FD800E400CC5BE9 /* ScheduleTableViewCell.swift in Sources */,
 				E36B4B761FD7E62A0035DC34 /* ImageMessageTableViewCell.swift in Sources */,
 				E36B4B961FD7EFF50035DC34 /* ShowInboxViewController.swift in Sources */,
+				E350FDDA1FE3BD74002F4A55 /* VerificationRouter.swift in Sources */,
 				E3B9FFD31FD7F0EF00CC5BE9 /* InboxTableCell.swift in Sources */,
 				E36B4B941FD7EFF50035DC34 /* ShowInboxRouter.swift in Sources */,
 				E350FDCA1FE28DDC002F4A55 /* ScheduleFormModels.swift in Sources */,

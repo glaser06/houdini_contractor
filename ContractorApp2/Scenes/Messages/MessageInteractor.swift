@@ -65,7 +65,7 @@ class MessageInteractor: MessageBusinessLogic, MessageDataStore
     // MARK: Do something
     
     func fetchMessages() {
-        self.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: conversation.name,messages: self.messages))
+        self.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: conversation.name, projectName: self.conversation.projectName,messages: self.messages))
     }
     func sendQuote(request: Message.SendQuote.Request) {
         let msg = request.message
@@ -132,6 +132,27 @@ class MessageInteractor: MessageBusinessLogic, MessageDataStore
 //        }
         
         var messageRef = self.ref.child("conversation-messages").child(self.conversation.conversationID)
+        if self.conversation.quoteID != "" {
+            messageRef.child(self.conversation.quoteID).observeSingleEvent(of: .value, with: { (snapshot) in
+                let data = snapshot.value as? NSDictionary
+                let quotePrice = data?["quotePrice"] as? Double
+                let s = Message.UpdateQuote.Response(quotePrice: quotePrice)
+                self.presenter?.updateQuote(response: s)
+            })
+        }
+        if self.conversation.scheduleID != "" {
+            messageRef.child(self.conversation.scheduleID).observeSingleEvent(of: .value, with: { (snapshot) in
+                let data = snapshot.value as! NSDictionary
+                let duration = data["duration"] as? Double
+                let dates = data["dates"] as? NSArray
+                let newDates = dates?.map({ (a) -> Date in
+                    let d = a as? Double
+                    return Date(timeIntervalSince1970: d!)
+                })
+                let s = Message.UpdateSchedule.Response(schedule: newDates?[0])
+                self.presenter?.updateSchedule(response: s)
+            })
+        }
         _refHandle = messageRef.observe(.childAdded, with: { [weak self] (snapshot) -> Void in
             guard let strongSelf = self else { return }
             let msg = snapshot.value as! NSDictionary
@@ -160,7 +181,7 @@ class MessageInteractor: MessageBusinessLogic, MessageDataStore
                         let insertIndex = strongSelf.messages.count - temp
                         
                         strongSelf.messages.insert(message, at: insertIndex)
-                        strongSelf.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: strongSelf.conversation.name,messages: strongSelf.messages))
+                        strongSelf.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: strongSelf.conversation.name, projectName: strongSelf.conversation.projectName,messages: strongSelf.messages))
                         
                     }
                 } else if let URL = URL(string: imageURL), let data = try? Data(contentsOf: URL) {
@@ -174,7 +195,7 @@ class MessageInteractor: MessageBusinessLogic, MessageDataStore
                     
                     
                     strongSelf.messages.insert(message, at: 0)
-                    strongSelf.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: strongSelf.conversation.name,messages: strongSelf.messages))
+                    strongSelf.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: strongSelf.conversation.name, projectName: strongSelf.conversation.projectName,messages: strongSelf.messages))
                 }
 //                cell.textLabel?.text = "sent by: \(name)"
             } else {
@@ -202,7 +223,7 @@ class MessageInteractor: MessageBusinessLogic, MessageDataStore
                 
                 
                 strongSelf.messages.insert(message, at: 0)
-                strongSelf.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: strongSelf.conversation.name,messages: strongSelf.messages))
+                strongSelf.presenter?.presentMessages(response: Message.FetchMessages.Response(userName: Auth.auth().currentUser?.displayName ?? "", businessName: strongSelf.conversation.name, projectName: strongSelf.conversation.projectName,messages: strongSelf.messages))
             }
             
 //            strongSelf.clientTable.insertRows(at: [IndexPath(row: strongSelf.messages.count-1, section: 0)], with: .automatic)

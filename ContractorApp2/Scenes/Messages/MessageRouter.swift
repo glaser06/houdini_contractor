@@ -38,6 +38,8 @@ class MessageRouter: NSObject, MessageRoutingLogic, MessageDataPassing
     }
     func passDataToSchedule(source: MessageDataStore, destination: inout ScheduleFormDataStore) {
         destination.conversationID = source.conversation.conversationID
+        destination.userID = source.conversation.userID
+        destination.contractorID = source.conversation.contractorID
     }
     //func routeToSomewhere(segue: UIStoryboardSegue?)
     //{

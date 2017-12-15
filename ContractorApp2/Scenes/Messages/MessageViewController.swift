@@ -18,6 +18,8 @@ import Photos
 protocol MessageDisplayLogic: class
 {
     func displayMessages(vm: Message.FetchMessages.ViewModel)
+    func displayQuote(vm: Message.UpdateQuote.ViewModel)
+    func displaySchedule(vm: Message.UpdateSchedule.ViewModel)
 }
 
 class MessageViewController: SLKTextViewController, MessageDisplayLogic, UINavigationControllerDelegate
@@ -112,6 +114,9 @@ class MessageViewController: SLKTextViewController, MessageDisplayLogic, UINavig
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var projectLabel: UILabel!
     
     // MARK: Do something
     
@@ -162,8 +167,15 @@ class MessageViewController: SLKTextViewController, MessageDisplayLogic, UINavig
     func displayMessages(vm: Message.FetchMessages.ViewModel) {
         self.messages = vm.messages
         self.titleLabel.text = vm.businessName
+        self.projectLabel.text = vm.projectName
         self.view.bringSubview(toFront: self.infoView)
         self.tableView?.reloadData()
+    }
+    func displaySchedule(vm: Message.UpdateSchedule.ViewModel) {
+        self.scheduleLabel.text = vm.schedule
+    }
+    func displayQuote(vm: Message.UpdateQuote.ViewModel) {
+        self.quoteLabel.text = vm.quotePrice
     }
     func addActionSheet() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
