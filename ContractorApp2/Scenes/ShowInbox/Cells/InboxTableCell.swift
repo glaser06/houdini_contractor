@@ -28,7 +28,7 @@ class InboxTableCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     
     func setCell(convo: ShowInbox.FetchInbox.ViewModel.DisplayableConversation) {
-        self.businessNameLabel.text = convo.businessName
+        self.businessNameLabel.text = convo.userName
 //        self.projectNameLabel.text = convo.projectName
 //        self.typeNameLabel.text = convo.businessName
         self.alertIndicator.isHidden = true

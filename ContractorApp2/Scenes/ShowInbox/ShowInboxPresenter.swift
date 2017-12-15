@@ -26,7 +26,7 @@ class ShowInboxPresenter: ShowInboxPresentationLogic
     func presentInbox(response: ShowInbox.FetchInbox.Response) {
         var tempArr: [ShowInbox.FetchInbox.ViewModel.DisplayableConversation] = []
         for each in response.conversations {
-            let disp = ShowInbox.FetchInbox.ViewModel.DisplayableConversation(businessName: each.name, message: "", time: "")
+            let disp = ShowInbox.FetchInbox.ViewModel.DisplayableConversation(userName: each.userName, message: "", time: "")
             tempArr.append(disp)
         }
         self.viewController?.displayInbox(viewModel: ShowInbox.FetchInbox.ViewModel(conversations: tempArr))

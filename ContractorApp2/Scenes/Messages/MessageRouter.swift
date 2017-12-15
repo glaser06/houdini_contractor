@@ -14,47 +14,57 @@ import UIKit
 
 @objc protocol MessageRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToSchedule(segue: UIStoryboardSegue)
+    
 }
 
 protocol MessageDataPassing
 {
-  var dataStore: MessageDataStore? { get }
+    var dataStore: MessageDataStore? { get }
 }
 
 class MessageRouter: NSObject, MessageRoutingLogic, MessageDataPassing
 {
-  weak var viewController: MessageViewController?
-  var dataStore: MessageDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: MessageViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: MessageDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    weak var viewController: MessageViewController?
+    var dataStore: MessageDataStore?
+    
+    // MARK: Routing
+    func routeToSchedule(segue: UIStoryboardSegue) {
+        
+        let destinationVC = segue.destination as! ScheduleFormViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToSchedule(source: dataStore!, destination: &destinationDS)
+    }
+    func passDataToSchedule(source: MessageDataStore, destination: inout ScheduleFormDataStore) {
+        destination.conversationID = source.conversation.conversationID
+    }
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    //{
+    //  if let segue = segue {
+    //    let destinationVC = segue.destination as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //  } else {
+    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
+    //  }
+    //}
+    
+    // MARK: Navigation
+    
+    //func navigateToSomewhere(source: MessageViewController, destination: SomewhereViewController)
+    //{
+    //  source.show(destination, sender: nil)
+    //}
+    
+    // MARK: Passing data
+    
+    //func passDataToSomewhere(source: MessageDataStore, destination: inout SomewhereDataStore)
+    //{
+    //  destination.name = source.name
+    //}
 }

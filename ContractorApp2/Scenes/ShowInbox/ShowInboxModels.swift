@@ -28,7 +28,7 @@ enum ShowInbox
     struct ViewModel
     {
         struct DisplayableConversation {
-            var businessName: String
+            var userName: String
             var message: String
             var time: String 
             

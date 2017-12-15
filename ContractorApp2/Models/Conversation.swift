@@ -17,12 +17,18 @@ class Conversation {
     var yelpID: String
     var image: UIImage?
     var conversationID: String
+    var projectName: String = ""
+    var contractorID: String
+    var userID: String
+    var userName: String = ""
     
-    init(name: String, convoID: String, yelpID: String, _ img: UIImage? = nil) {
+    init(name: String, convoID: String, yelpID: String, _ img: UIImage? = nil, cID: String, uid: String) {
         self.name = name
         
         self.yelpID = yelpID
         self.conversationID = convoID
+        self.contractorID = cID
+        self.userID = uid
         //        self.project = proj
     }
     
